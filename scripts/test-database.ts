@@ -25,6 +25,8 @@ async function testDatabase() {
         data: {
           email: email,
           name: name,
+          password: "admin123",
+          role: "ADMIN"
         },
       });
       console.log("✅ Created user:", newUser);
