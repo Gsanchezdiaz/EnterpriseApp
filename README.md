@@ -27,4 +27,4 @@ Agregamos script en package.json para hacer una prueba de coneccion con la base 
 - "db:studio": "prisma studio"
 
 Instalamos paquetes de componentes de ShadCN
-- pnpm dlx shadcn@latest init (para este proyecto usamos radix y style nova)
+- pnpm dlx shadcn@latest init (para este proyecto usamos radix-ui y style nova)
