@@ -25,3 +25,6 @@ Para enviar los cambios del esquema a la base de datos usamos los siguientes com
 Agregamos script en package.json para hacer una prueba de coneccion con la base de datos y para abrir prisma studio
 - "db:test": "tsx scripts/test-database.ts",
 - "db:studio": "prisma studio"
+
+Instalamos paquetes de componentes de ShadCN
+- pnpm dlx shadcn@latest init (para este proyecto usamos radix y style nova)
