@@ -28,3 +28,7 @@ Agregamos script en package.json para hacer una prueba de coneccion con la base 
 
 Instalamos paquetes de componentes de ShadCN
 - pnpm dlx shadcn@latest init (para este proyecto usamos radix-ui y style nova)
+usar este comando instalara la configuracion por defecto de colores y themas,
+si deseas perzonalizar, deberias usar la web de shadcn en la opcion create, luego de definir todo te devolverla un comando personalidazado
+con toda la configuracion
+- pnpm dlx shadcn@latest init --preset b1Kjm7FNPV --template next --force
