@@ -32,3 +32,14 @@ usar este comando instalara la configuracion por defecto de colores y themas,
 si deseas perzonalizar, deberias usar la web de shadcn en la opcion create, luego de definir todo te devolverla un comando personalidazado
 con toda la configuracion
 - pnpm dlx shadcn@latest init --preset b1Kjm7FNPV --template next --force
+
+listado de componentes
+- pnpm dlx shadcn@latest add button
+- pnpm dlx shadcn@latest add dropdown-menu
+- pnpm dlx shadcn@latest add separator
+- pnpm add @radix-ui/react-collapsible
+
+dependencia para ordenar codigo de tailwindcss (se agrega el plugin en el archivo .prettierrc)
+- pnpm add -D prettier prettier-plugin-tailwindcss
+dependencia para animaciones
+- pnpm add motion
