@@ -37,9 +37,14 @@ listado de componentes
 - pnpm dlx shadcn@latest add button
 - pnpm dlx shadcn@latest add dropdown-menu
 - pnpm dlx shadcn@latest add separator
+- pnpm dlx shadcn@latest add avatar
 - pnpm add @radix-ui/react-collapsible
 
 dependencia para ordenar codigo de tailwindcss (se agrega el plugin en el archivo .prettierrc)
 - pnpm add -D prettier prettier-plugin-tailwindcss
 dependencia para animaciones
 - pnpm add motion
+dependencia para temas
+- pnpm add next-themes
+
+Creamos archivo provider.tsx

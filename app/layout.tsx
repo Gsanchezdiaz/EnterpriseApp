@@ -2,10 +2,17 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Roboto_Slab, Figtree } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import Providers from "@/components/provider";
 
-const figtreeHeading = Figtree({subsets:['latin'],variable:'--font-heading'});
+const figtreeHeading = Figtree({
+  subsets: ["latin"],
+  variable: "--font-heading",
+});
 
-const robotoSlab = Roboto_Slab({subsets:['latin'],variable:'--font-serif'});
+const robotoSlab = Roboto_Slab({
+  subsets: ["latin"],
+  variable: "--font-serif",
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,11 +35,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={cn("font-serif", robotoSlab.variable, figtreeHeading.variable)}>
+    <html
+      suppressHydrationWarning
+      lang="en"
+      className={cn("font-serif", robotoSlab.variable, figtreeHeading.variable)}
+    >
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
