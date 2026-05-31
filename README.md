@@ -48,3 +48,15 @@ dependencia para temas
 - pnpm add next-themes
 
 Creamos archivo provider.tsx
+
+Consumir datos y gestionar el estado del servidor en aplicaciones React
+usaremos react query (stanstack query)
+ - pnpm add @tanstack/react-query
+
+ Validar datos, asegurarse de que los datos tengan la forma esperada, especialmente cuando vienen de fuentes externas.
+ usaremos zod
+ zod-validation-error: es una librería pequeña que se usa para convertir los errores de Zod en mensajes más legibles.
+ - pnpm add zod zod-validation-error
+
+ Para la autenticacion usaremos nextAuth
+ - pnpm add next-auth@beta
