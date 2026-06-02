@@ -38,6 +38,8 @@ listado de componentes
 - pnpm dlx shadcn@latest add dropdown-menu
 - pnpm dlx shadcn@latest add separator
 - pnpm dlx shadcn@latest add avatar
+- pnpm dlx shadcn@latest add sonner         (para mensajes emergentes)
+- pnpm dlx shadcn@latest add alert-dialog     (para mensajes dialog de confirmacion)
 - pnpm add @radix-ui/react-collapsible
 
 dependencia para ordenar codigo de tailwindcss (se agrega el plugin en el archivo .prettierrc)
@@ -60,3 +62,6 @@ usaremos react query (stanstack query)
 
  Para la autenticacion usaremos nextAuth
  - pnpm add next-auth@beta
+
+ Para el manejo del estado usaremos Zustand + immer (immer se usa para simplificar actualizaciones del estado)
+ - pnpm add immer zustand
