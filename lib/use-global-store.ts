@@ -3,7 +3,7 @@ import { createStore } from "./createStore";
 type AlertConfig = {
   title?: string;
   description?: string;
-  type?: "success" | "error" | "info" | "warning";
+  type?: "success" | "error" | "info" | "warning" | "question";
   confirmLabel?: string;
   cancelLabel?: string;
   onConfirm?: () => void;

@@ -9,11 +9,31 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "./alert-dialog";
+import {
+  CircleCheckBig,
+  CircleAlert,
+  Info,
+  TriangleAlert,
+  CircleHelp,
+} from "lucide-react";
 
 const AlertDialogProvider = () => {
   const { alertConfig, alertOpen, updateAlertOpen } = useGlobalStore();
 
+  const alertIcons = {
+    success: CircleCheckBig,
+    error: CircleAlert,
+    info: Info,
+    warning: TriangleAlert,
+    question: CircleHelp,
+  } as const;
+
   if (!alertConfig) return null;
+
+  const Icon =
+    alertConfig.type && alertIcons[alertConfig.type]
+      ? alertIcons[alertConfig.type]
+      : null;
 
   const handleConfirm = () => {
     if (alertConfig.onConfirm) {
@@ -33,9 +53,12 @@ const AlertDialogProvider = () => {
     <AlertDialog open={alertOpen} onOpenChange={updateAlertOpen}>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>
-            {alertConfig.title || "Confirmation Required"}
-          </AlertDialogTitle>
+          <div className="flex items-center gap-3">
+            {Icon && <Icon className="size-5" />}
+            <AlertDialogTitle>
+              {alertConfig.title || "Confirmation Required"}
+            </AlertDialogTitle>
+          </div>
           <AlertDialogDescription>
             {alertConfig.description ||
               "Are you sure you want to perform this action?"}
