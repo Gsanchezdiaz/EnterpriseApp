@@ -34,7 +34,7 @@ const CategoryCards = () => {
               onClick={() => {
                 alert({
                   title: "Delete Category",
-                  description: "This action cannot be undone.",
+                  description: "This action cannot be undone. Are you sure you want to delete this category?",
                   confirmLabel: "Delete",
                   cancelLabel: "Cancel",
                   type: "question",

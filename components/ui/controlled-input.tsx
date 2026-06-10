@@ -43,7 +43,7 @@ const ControlledInput = <T extends FieldValues>({
               {...props}
             />
             {!!error && (
-              <p className="text-destructive text-sm">{error.message}</p>
+              <p className="text-destructive text-sm pl-1">{error.message}</p>
             )}
           </>
         )}
