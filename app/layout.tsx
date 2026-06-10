@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Roboto_Slab, Figtree } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import Providers from "@/components/provider";
+import Providers from "@/components/providers";
 
 const figtreeHeading = Figtree({
   subsets: ["latin"],

@@ -41,6 +41,12 @@ listado de componentes
 - pnpm dlx shadcn@latest add sonner         (para mensajes emergentes)
 - pnpm dlx shadcn@latest add alert-dialog     (para mensajes dialog de confirmacion)
 - pnpm add @radix-ui/react-collapsible
+- pnpm add @radix-ui/react-slot             (para mejorar el compomente buton de shand/cn)
+
+Para formulario
+- pnpm dlx shadcn@latest add input 
+- pnpm dlx shadcn@latest add label 
+- pnpm dlx shadcn@latest add dialog 
 
 dependencia para ordenar codigo de tailwindcss (se agrega el plugin en el archivo .prettierrc)
 - pnpm add -D prettier prettier-plugin-tailwindcss
@@ -63,5 +69,8 @@ usaremos react query (stanstack query)
  Para la autenticacion usaremos nextAuth
  - pnpm add next-auth@beta
 
- Para el manejo del estado usaremos Zustand + immer (immer se usa para simplificar actualizaciones del estado)
+ Para el manejo del estado global usaremos Zustand + immer (immer se usa para simplificar actualizaciones del estado)
  - pnpm add immer zustand
+
+Para la creacion de formularios y su validaciones con zod usaremos react-hook-form y resolvers
+- pnpm add react-hook-form @hookform/resolvers
