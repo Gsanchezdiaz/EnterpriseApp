@@ -40,6 +40,7 @@ listado de componentes
 - pnpm dlx shadcn@latest add avatar
 - pnpm dlx shadcn@latest add sonner         (para mensajes emergentes)
 - pnpm dlx shadcn@latest add alert-dialog     (para mensajes dialog de confirmacion)
+- pnpm dlx shadcn@latest add skeleton     
 - pnpm add @radix-ui/react-collapsible
 - pnpm add @radix-ui/react-slot             (para mejorar el compomente buton de shand/cn)
 

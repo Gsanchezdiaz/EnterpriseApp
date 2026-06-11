@@ -54,7 +54,7 @@ const CategoryFormDialog = ({ smallTrigger }: CategoryFormDialogProps) => {
     if (selectedCategoryId && categoryQuery.data) {
       form.reset(categoryQuery.data);
     }
-  });
+  }, [categoryQuery.data, form, selectedCategoryId]);
 
   const handleDialogOpenChange = (open: boolean) => {
     updateCategoryDialogOpen(open);
