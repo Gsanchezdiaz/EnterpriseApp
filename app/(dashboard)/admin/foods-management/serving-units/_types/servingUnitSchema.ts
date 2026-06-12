@@ -1,9 +1,8 @@
 import { zPrims } from "@/lib/customErrorMap";
 import z from "zod";
 
-const categorySchema = z.intersection(
+const servingUnitSchema = z.intersection(
   z.object({
-    // name: z.string().min(3).max(20),
     name: zPrims.text
       .min(3, "Minimum 3 characters required")
       .max(20, "Maximum 20 characters allowed"),
@@ -14,11 +13,11 @@ const categorySchema = z.intersection(
   ]),
 );
 
-type CategorySchema = z.infer<typeof categorySchema>;
+type ServingUnitSchema = z.infer<typeof servingUnitSchema>;
 
-const categoryDefaultValues: CategorySchema = {
+const servingUnitDefaultValues: ServingUnitSchema = {
   action: "create",
   name: "",
 };
 
-export { categorySchema, type CategorySchema, categoryDefaultValues };
+export { servingUnitSchema, servingUnitDefaultValues, type ServingUnitSchema };
