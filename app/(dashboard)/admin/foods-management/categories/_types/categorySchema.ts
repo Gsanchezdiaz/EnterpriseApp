@@ -1,10 +1,9 @@
-import { zPrims } from "@/lib/customErrorMap";
+import { zBase } from "@/lib/customErrorMap";
 import z from "zod";
 
 const categorySchema = z.intersection(
   z.object({
-    // name: z.string().min(3).max(20),
-    name: zPrims.text
+    name: zBase.required
       .min(3, "Minimum 3 characters required")
       .max(20, "Maximum 20 characters allowed"),
   }),

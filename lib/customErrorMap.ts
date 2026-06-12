@@ -1,89 +1,46 @@
 import { z } from "zod";
+import { patterns } from "./constants";
 
-const customErrorMap: z.ZodErrorMap = (issue) => {
-  switch (issue.code) {
-    case "invalid_type":
-      if (issue.received === "undefined" || issue.received === "null") {
-        return { message: "This field is required" };
-      }
-      if (issue.expected === "string") {
-        return { message: "Please enter text" };
-      }
-      if (issue.expected === "number") {
-        return { message: "Please enter a number" };
-      }
-      return { message: "Invalid value type" };
+const zBase = {
+  required: z
+    .string({
+      error: (issue) =>
+        issue.input === undefined ? "This field is required" : "Invalid input",
+    })
+    .trim()
+    .min(1, "This field is required"), // Frena en seco si está vacío
 
-    case "too_small":
-      if (issue.type === "string") {
-        return { message: `Minimum ${issue.minimum} characters required` };
-      }
-      if (issue.type === "number") {
-        return {
-          message: `Number must be greater than or equal to ${issue.minimum}`,
-        };
-      }
-      return { message: "Value is too small" };
-
-    case "too_big":
-      if (issue.type === "string") {
-        return { message: `Maximum ${issue.maximum} characters allowed` };
-      }
-      if (issue.type === "number") {
-        return {
-          message: `Number must be less than or equal to ${issue.maximum}`,
-        };
-      }
-      return { message: "Value is too large" };
-  }
+  // Acepta undefined o el string vacío de React Hook Form
+  optional: z.string().trim().optional().or(z.literal("")),
 };
 
 const zPrims = {
-  // 1. Text: Robusto contra espacios en blanco engañosos
-  text: z
-    .string({
-      error: (issue) =>
-        issue.input === undefined
-          ? "This field is required"
-          : "Invalid text format",
-    })
-    .trim()
-    .min(1, "This field is required"),
+  // Email
+  email: z.string().email("Please enter a valid email address").toLowerCase(),
 
-  // 2. Optional Text: Maneja limpiamente el string vacío de un input no requerido
-  textOptional: z.string().trim().optional().or(z.literal("")),
+  // Password
+  password: z
+    .string()
+    .min(8, "Minimum eight characters")
+    .max(255, "Maximum 255 characters allowed")
+    .regex(patterns.minimumOneUpperCaseLetter, "Minimum one lower case letter")
+    .regex(patterns.minimumOneLowerCaseLetter, "Minimum one lower case letter")
+    .regex(patterns.minimumOneDigit, "Minimum one digit")
+    .regex(
+      patterns.minimumOneSpecialCharacter,
+      "Minimum one special character",
+    ),
 
-  // 3. Email: Valida y además sanitiza convirtiendo todo a minúsculas
-  email: z
-    .string({
-      error: (issue) =>
-        issue.input === undefined ? "Email is required" : "Invalid format",
-    })
-    .trim()
-    .min(1, "Email is required")
-    .email("Please enter a valid email address")
-    .toLowerCase(),
+  // Numeros
+  number: z
+    .string()
+    .regex(patterns.zeroTo9999, "Must be between 0 and 9999.99")
+    .transform(Number),
 
-  // 4. Web Number: La solución definitiva para <input type="number">
-  number: z.preprocess(
-    (val) => {
-      // Atrapamos el string vacío de React Hook Form ANTES de que Zod lo evalúe
-      if (val === "" || val === null || val === undefined) return undefined;
-      const parsed = Number(val);
-      return isNaN(parsed) ? undefined : parsed;
-    },
-    z.number({
-      error: (issue) =>
-        issue.input === undefined
-          ? "This field is required"
-          : "Please enter a valid number",
-    }),
-  ),
-
-  // 5. Checkbox Required: Para los clásicos "Aceptar Términos y Condiciones"
+  // Checkbox Required: Para los clásicos "Aceptar Términos y Condiciones"
   checkboxRequired: z.literal(true, {
     error: () => "You must accept this condition",
   }),
 };
 
-export { customErrorMap, zPrims };
+export { zBase, zPrims };
